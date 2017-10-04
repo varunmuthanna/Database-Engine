@@ -1,0 +1,99 @@
+varun@varun:~/Desktop/DavisBaseDBEngine/bin$ java DavisBaseMain 
+--------------------------------------------------------------------------------
+Welcome to DavisBaseLite
+DavisBaseLite Version v1.0b(example)
+Â©2016 Varun Muthanna
+
+Type "help;" to display supported commands.
+--------------------------------------------------------------------------------
+davisbase_tables
+davisql> SHOW TABLES;
+table_name	DBname
+davisbase_tables	catalog
+
+davisbase_columns	catalog
+
+davisql> CREATE TABLE stud ( RollNo INT PRIMARY KEY, Name TEXT [NOT NULL], Grade REAL [NOT NULL], Major TEXT );
+davisql> INSERT INTO TABLE (RollNo, Name,Grade, Major) stud VALUES (1,varun,3.89,CS);
+davisql> SELECT * FROM stud;
+rollno	name	grade	major	
+1	varun	3.89	cs	
+davisql> INSERT INTO TABLE (RollNo, Name,Grade, Major) stud VALUES (2,varun,3.89,CE);
+davisql> SELECT * FROM stud;
+rollno	name	grade	major	
+1	varun	3.89	cs	
+2	varun	3.89	ce	
+davisql> DELETE FROM TABLE stud WHERE Major = CS;
+delete command
+davisql> SELECT * FROM stud;
+rollno	name	grade	major	
+2	varun	3.89	ce	
+davisql> UPDATE stud SET grade = 3.5 where RollNo = 2;
+davisql> SELECT * FROM stud;
+rollno	name	grade	major	
+2	varun	3.5	ce	
+davisql> SHOW DATABASE;
+DBname
+----------
+catalog
+defaultdb
+davisql> SHOW TABLES;
+table_name	DBname
+davisbase_tables	catalog
+
+davisbase_columns	catalog
+
+stud	defaultdb
+
+davisql> CREATE DATABASE varun;
+davisql> USE DATABASE varun;
+davisql> CREATE TABLE stud ( RollNo INT PRIMARY KEY, Name TEXT [NOT NULL], Grade REAL [NOT NULL], Major TEXT );
+davisql> INSERT INTO TABLE (RollNo, Name,Grade, Major) stud VALUES (1,varun,3.89,CS);
+davisql> SELECT * FROM stud WHERE GRADE > 3.8;
+rollno	name	grade	major	
+1	varun	3.89	cs	
+davisql> SELECT * FROM stud;
+rollno	name	grade	major	
+1	varun	3.89	cs	
+davisql> SHOW DATABASE;
+DBname
+----------
+catalog
+defaultdb
+varun
+davisql> SHOW TABLES;
+table_name	DBname
+davisbase_tables	catalog
+
+davisbase_columns	catalog
+
+stud	defaultdb
+
+stud	varun
+
+davisql> DROP TABLE stud;
+davisql> SHOW TABLES;
+table_name	DBname
+davisbase_tables	catalog
+
+davisbase_columns	catalog
+
+stud	defaultdb
+
+davisql> USE DATABASE defaultdb;
+davisql> SELECT * FROM stud;
+rollno	name	grade	major	
+2	varun	3.5	ce	
+davisql> SHOW DATABASE;
+DBname
+----------
+catalog
+defaultdb
+varun
+davisql> DROP DATABASE varun;
+davisql> SHOW DATABASE;
+DBname
+----------
+catalog
+defaultdb
+davisql>
